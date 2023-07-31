@@ -21,7 +21,7 @@ import { StarIcon } from "@chakra-ui/icons";
 
 const Image_Stock = ({ item }) => (
   <Flex flexDir={"column"} h={"270px"}>
-    {item.isNew && (
+    {item.productIsNew && (
       <Circle
         bg={"green.300"}
         size={"10px"}
@@ -44,7 +44,7 @@ const Image_Stock = ({ item }) => (
         Sold Out
       </Badge>
     )}
-    {item.isNew && (
+    {item.productIsNew && (
       <Badge
         bg={"green.200"}
         mt={5}
@@ -60,26 +60,40 @@ const Image_Stock = ({ item }) => (
   </Flex>
 );
 
-
-const Rating =({rating,numReviews})=>(
+const Rating = ({ rating, numberOfReviews }) => (
   <HStack spacing={1} mt={1}>
-    <Icon as={StarIcon} fontSize={'15px'} color={'orange.500'} />
-    <Icon as={StarIcon} fontSize={'15px'} color={rating >=2 ? 'orange.500' :'gray.200' } />
-    <Icon as={StarIcon} fontSize={'15px'} color={rating >=3 ? 'orange.500' :'gray.200' } />
-    <Icon as={StarIcon} fontSize={'15px'} color={rating >=4 ? 'orange.500' :'gray.200' } />
-    <Icon as={StarIcon} fontSize={'15px'} color={rating >=5 ? 'orange.500' :'gray.200' } />
-    <Text>{`${numReviews} ${numReviews===1? 'Review':"Reviews"}  `}</Text>
-
+    <Icon as={StarIcon} fontSize={"15px"} color={"orange.500"} />
+    <Icon
+      as={StarIcon}
+      fontSize={"15px"}
+      color={rating >= 2 ? "orange.500" : "gray.200"}
+    />
+    <Icon
+      as={StarIcon}
+      fontSize={"15px"}
+      color={rating >= 3 ? "orange.500" : "gray.200"}
+    />
+    <Icon
+      as={StarIcon}
+      fontSize={"15px"}
+      color={rating >= 4 ? "orange.500" : "gray.200"}
+    />
+    <Icon
+      as={StarIcon}
+      fontSize={"15px"}
+      color={rating >= 5 ? "orange.500" : "gray.200"}
+    />
+    <Text>{`${numberOfReviews} ${
+      numberOfReviews === 1 ? "Review" : "Reviews"
+    }  `}</Text>
   </HStack>
-)
-
-
+);
 
 const ProductCard = ({ item }) => {
   return (
     <Stack w={"250px"} px={2} py={5} position={"relative"}>
       <Image_Stock item={item} />
-      <Rating rating={item.rating} numReviews={item.numReviews} />
+      <Rating rating={item.rating} numberOfReviews={item.numberOfReviews} />
       {/* name and price */}
       <Name_Price item={item} />
     </Stack>
